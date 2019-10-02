@@ -3,3 +3,4 @@
 ## whereis chromedriver
 ## chromedriver: /usr/bin/chromedriver
 
+.gradle/
