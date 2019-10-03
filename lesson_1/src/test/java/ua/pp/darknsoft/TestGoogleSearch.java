@@ -25,9 +25,8 @@ public class TestGoogleSearch {
     public void searchOnGoogle() {
         driver.get("http://www.google.com");
         driver.findElement(By.name("q")).sendKeys("WebDriver");
-        //if the tooltip closes the search button. For Firefox.
-        //Actions action = new Actions(driver);
-        //action.sendKeys(Keys.ESCAPE).perform();
+        Actions action = new Actions(driver);
+        action.sendKeys(Keys.ESCAPE).perform();//if the tooltip closes the search button.
         driver.findElement(By.name("btnK")).click();
         wait.until(ExpectedConditions.titleIs("WebDriver - Пошук Google"));
     }
