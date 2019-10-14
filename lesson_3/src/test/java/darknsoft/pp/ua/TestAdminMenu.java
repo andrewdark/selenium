@@ -24,6 +24,7 @@ public class TestAdminMenu {
     public void testAdminMenu() {
         loginAdminPage();
         webDriver.get("http://192.168.1.15/admin/");
+        assertTrue(areElementsPresent(webDriver, By.cssSelector("ul#box-apps-menu>li")));
         int outerSize = webDriver.findElements(By.cssSelector("ul#box-apps-menu>li")).size();
         for (int i = 0; i < outerSize; i++) {
             webDriver.findElements(By.cssSelector("ul#box-apps-menu>li")).get(i).click();
@@ -43,7 +44,7 @@ public class TestAdminMenu {
         webDriver.quit();
         webDriver = null;
     }
-    
+
     private boolean isElementPresent(WebDriver driver, By locator) {
         try {
             driver.findElement(locator);
@@ -51,6 +52,10 @@ public class TestAdminMenu {
         } catch (NoSuchElementException ex) {
             return false;
         }
+    }
+
+    boolean areElementsPresent(WebDriver driver, By locator) {
+        return driver.findElements(locator).size() > 0;
     }
 
     private void loginAdminPage() {
